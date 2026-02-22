@@ -9,6 +9,16 @@ import java.util.List;
 public class ServiceCandidat implements ICandidat {
     @Autowired
     public CandidatRepository candidatRepository;
+    @Autowired
+    public JobClient jobClient;
+
+    public List<Job> getAllJobs() {
+        return  jobClient.getAllJobs();
+    }
+    public Job getJobById(int id) {
+        return jobClient.getJob(id);
+    }
+
     @Override
     public List<Candidat> getCandidats() {
         return candidatRepository.findAll();

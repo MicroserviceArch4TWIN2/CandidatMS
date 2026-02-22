@@ -11,8 +11,19 @@ public class CandidatRestAPI {
     public String title = "Hello from Candidat4twin2MS";
     @Autowired
     public  ICandidat candidatInterface;
-   @RequestMapping("/hello")
-   public String getTitle() {
+
+    @Autowired
+    public ServiceCandidat serCandid;
+    @RequestMapping("/jobs")
+    public List<Job> getJobs() {
+        return serCandid.getAllJobs();
+    }
+    @RequestMapping("/jobs/{id}")
+    public Job getJob(@PathVariable("id") int id) {
+        return serCandid.getJobById(id);
+    }
+    @RequestMapping("/hello")
+    public String getTitle() {
         return title;
     }
     @GetMapping
